@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblioteca escolar · Préstamos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Biblioteca escolar</h1>
+      <p>Sistema de préstamos de libros</p>
+    </div>
+    <label class="fecha">Fecha de hoy
+      <input type="date" id="fecha-hoy">
+    </label>
+  </header>
+
+  <main>
+    <section class="tarjeta">
+      <h2>Registrar préstamo</h2>
+      <form id="form-prestamo">
+        <label>Matrícula del alumno
+          <input id="matricula" placeholder="Ej. A001" required autocomplete="off">
+        </label>
+        <label>Libro disponible
+          <select id="libro" required></select>
+        </label>
+        <button type="submit">Prestar</button>
+      </form>
+      <p id="aviso" class="aviso" role="status"></p>
+      <p class="nota">Alumnos de ejemplo: <span id="alumnos"></span></p>
+      <p class="nota">Reglas: máximo 3 libros por alumno, 7 días por préstamo y no se presta a quien tenga préstamos vencidos.</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Préstamos activos</h2>
+      <div class="tabla">
+        <table>
+          <thead><tr><th>Folio</th><th>Alumno</th><th>Libro</th><th>Prestado</th><th>Fecha límite</th><th></th></tr></thead>
+          <tbody id="tabla-activos"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Préstamos vencidos <span class="contador" id="total-vencidos">0</span></h2>
+      <div class="tabla">
+        <table>
+          <thead><tr><th>Alumno</th><th>Libro</th><th>Fecha límite</th><th>Días de retraso</th></tr></thead>
+          <tbody id="tabla-vencidos"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <button id="reiniciar" class="secundario">Restablecer datos de ejemplo</button>
+    <span>Cambia la «Fecha de hoy» para simular el paso de los días y probar los vencimientos.</span>
+  </footer>
+
+  <script src="prestamos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
